@@ -1,0 +1,19 @@
+version: '3'
+services:
+  backend:
+    build:
+      context: .
+    ports:
+      - 5000:5000
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: test@123
+      MYSQL_DB: two-tier
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: test@123
+      MYSQL_USER: devops
+      MYSQL_DATABASE: two-tier
+      MySQL_PASSWORD: devops
