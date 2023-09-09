@@ -10,6 +10,9 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: test@123
       MYSQL_DB: two-tier
+    depends_on:
+      - mysql
+
   mysql:
     image: mysql:5.7
     environment:
@@ -17,3 +20,8 @@ services:
       MYSQL_USER: devops
       MYSQL_DATABASE: two-tier
       MySQL_PASSWORD: devops
+    volumes:
+      - my-datavolume:/var/lib/mysql
+volumes:
+  my-datavolume:
+
